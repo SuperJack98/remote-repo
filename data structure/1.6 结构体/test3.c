@@ -20,6 +20,11 @@ int main(int argc, char const *argv[])
 
     printf("x=%d,y=%d\n", p.x, p.y);
     printf("x=%d,y=%d\n", pp->x, pp->y);
+
+    pp->x = 5;
+    pp->y = 10;
+    printf("x=%d,y=%d\n", pp->x, pp->y);
+    
 	return 0;
 }
 

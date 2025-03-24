@@ -1,10 +1,9 @@
 #include <stdio.h>
 
-typedef struct
-{
+typedef struct {
 	float Realpart;
 	float Imagepart;
-}Complex;
+} Complex;
 
 void Create(Complex *C, float x, float y)
 {

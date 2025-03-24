@@ -1,10 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-typedef struct 
-{
+typedef struct {
 	int x;
 	int y;
-}po;
+} po;
 
 int main(int argc, char const *argv[])
 {
