@@ -13,8 +13,8 @@ typedef struct {
 //顺序表初始化－动态分配内存
 SeqList* initList()
 {
-	SeqList *L = (SeqList*)malloc(sizeof(SeqList));
-	L->data = (ElemType*)malloc(sizeof(ElemType) * MAXSIZE);
+	SeqList *L = (SeqList *)malloc(sizeof(SeqList));
+	L->data = (ElemType *)malloc(sizeof(ElemType) * MAXSIZE);
 	L->length = 0;
 	return L;
 }
