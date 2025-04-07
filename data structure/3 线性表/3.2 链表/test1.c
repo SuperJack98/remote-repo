@@ -2,15 +2,15 @@
 #include <stdlib.h>
 typedef int ElemType;
 
-typedef struct node{
+typedef struct node {
 	ElemType data;
 	struct node *next;
-}Node;
+} Node;
 
 //初化链表
-Node* initList()
+Node *initList()
 {
-	Node *head = (Node*)malloc(sizeof(Node));
+	Node *head = (Node *)malloc(sizeof(Node));
 	head->data = 0;
 	head->next = NULL;
 	return head;

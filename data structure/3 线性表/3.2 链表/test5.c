@@ -3,24 +3,24 @@
 
 typedef int ElemType;
 
-typedef struct node{
+typedef struct node {
 	ElemType data;
 	struct node *next;
-}Node;
+} Node;
 
 //初化链表
-Node* initList()
+Node *initList()
 {
-	Node *head = (Node*)malloc(sizeof(Node));
+	Node *head = (Node *)malloc(sizeof(Node));
 	head->data = 0;
 	head->next = NULL;
 	return head;
 }
 
 //头插法
-int insertHead(Node* L, ElemType e)
+int insertHead(Node *L, ElemType e)
 {
-	Node *p = (Node*)malloc(sizeof(Node));
+	Node *p = (Node *)malloc(sizeof(Node));
 	p->data = e;
 	p->next = L->next;
 	L->next = p;
@@ -28,11 +28,10 @@ int insertHead(Node* L, ElemType e)
 }
 
 //遍历
-void listNode(Node* L)
+void listNode(Node *L)
 {
 	Node *p = L->next;
-	while(p != NULL)
-	{
+	while (p != NULL) {
 		printf("%d ", p->data);
 		p = p->next;
 	}
@@ -40,20 +39,19 @@ void listNode(Node* L)
 }
 
 //获取尾部结点
-Node*  get_tail(Node  *L)
+Node *get_tail(Node *L)
 {
 	Node *p = L;
-	while(p->next != NULL)
-	{
+	while (p->next != NULL) {
 		p = p->next;
 	}
 	return p;
 }
 
 //尾插法
-Node* insertTail(Node *tail, ElemType e)
+Node *insertTail(Node *tail, ElemType e)
 {
-	Node *p = (Node*)malloc(sizeof(Node));
+	Node *p = (Node *)malloc(sizeof(Node));
 	p->data = e;
 	tail->next = p;
 	p->next = NULL;
@@ -68,18 +66,16 @@ int insertNode(Node *L, int pos, ElemType e)
 	int i = 0;
 	
 	//遍历链表找到插入位置的前驱节点
-	while(i < pos-1)
-	{
+	while (i < pos - 1) {
 		p = p->next;
 		i++;
-		if (p == NULL)
-		{
+		if (p == NULL) {
 			return 0;
 		}
 	}
 	
 	//要插入的新节点
-	Node *q = (Node*)malloc(sizeof(Node));
+	Node *q = (Node *)malloc(sizeof(Node));
 	q->data = e;
 	q->next = p->next;
 	p->next = q;

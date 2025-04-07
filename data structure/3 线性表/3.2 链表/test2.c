@@ -3,24 +3,24 @@
 
 typedef int ElemType;
 
-typedef struct node{
+typedef struct node {
 	ElemType data;
 	struct node *next;
-}Node;
+} Node;
 
 //初化链表
-Node* initList()
+Node *initList()
 {
-	Node *head = (Node*)malloc(sizeof(Node));
+	Node *head = (Node *)malloc(sizeof(Node));
 	head->data = 0;
 	head->next = NULL;
 	return head;
 }
 
 //头插法
-int insertHead(Node* L, ElemType e)
+int insertHead(Node *L, ElemType e)
 {
-	Node *p = (Node*)malloc(sizeof(Node));
+	Node *p = (Node *)malloc(sizeof(Node));
 	p->data = e;
 	p->next = L->next;
 	L->next = p;
