@@ -5,10 +5,10 @@
 typedef int ElemType;
 
 //顺序表定义
-typedef struct{
+typedef struct {
 	ElemType *data;
 	int length;
-}SeqList;
+} SeqList;
 
 //顺序表初始化－动态分配内存
 SeqList* initList()
@@ -22,8 +22,7 @@ SeqList* initList()
 //尾部添加元素
 int appendElem(SeqList *L, ElemType e)
 {
-	if (L->length>=MAXSIZE)
-	{
+	if (L->length >= MAXSIZE) {
 		printf("顺序表已满\n");
 		return 0;
 	}
@@ -36,8 +35,7 @@ int appendElem(SeqList *L, ElemType e)
 //遍历
 void listElem(SeqList *L)
 {
-	for (int i = 0; i < L->length; i++)
-	{
+	for (int i = 0; i < L->length; i++) {
 		printf("%d ", L->data[i]);
 	}
 	printf("\n");
@@ -46,25 +44,21 @@ void listElem(SeqList *L)
 //插入数据
 int insertElem(SeqList *L, int pos, ElemType e)
 {
-	if(L->length >= MAXSIZE)
-	{
+	if (L->length >= MAXSIZE) {
 		printf("表已经满了\n");
 		return 0;
 	}
 
-	if (pos < 1 || pos > L->length)
-	{
+	if (pos < 1 || pos > L->length) {
 		printf("插入位置错误\n");
 		return 0;
 	}
 
-	if (pos <= L->length)
-	{
-		for (int i = L->length-1; i >= pos-1; i--)
-		{
-			L->data[i+1] = L->data[i];
+	if (pos <= L->length) {
+		for (int i = L->length - 1; i >= pos - 1; i--) {
+			L->data[i + 1] = L->data[i];
 		}
-		L->data[pos-1] = e;
+		L->data[pos - 1] = e;
 		L->length++;	
 		
 	}
@@ -74,24 +68,20 @@ int insertElem(SeqList *L, int pos, ElemType e)
 //删除数据
 int deleteElem(SeqList *L, int pos, ElemType *e)
 {
-	if(L->length == 0)
-	{
+	if (L->length == 0) {
 		printf("空表\n");
 		return 0;
 	}
 
-	if (pos < 1 || pos > L->length)
-	{
+	if (pos < 1 || pos > L->length) {
 		printf("删除数据位置有误\n");
 		return 0;
 	}
 
-	*e = L->data[pos-1];
-	if (pos < L->length)
-	{
-		for (int i = pos; i < L->length; i++)
-		{
-			L->data[i-1] = L->data[i];
+	*e = L->data[pos - 1];
+	if (pos < L->length) {
+		for (int i = pos; i < L->length; i++) {
+			L->data[i - 1] = L->data[i];
 		}
 	}
 	L->length--;
@@ -101,16 +91,13 @@ int deleteElem(SeqList *L, int pos, ElemType *e)
 //查找数据位置
 int findElem(SeqList *L, ElemType e)
 {
-	if (L->length == 0)
-	{
+	if (L->length == 0) {
 		printf("空列表\n");
 		return 0;
 	}
 
-	for (int i = 0; i < L->length; i++)
-	{
-		if(L->data[i] == e)
-		{
+	for (int i = 0; i < L->length; i++) {
+		if (L->data[i] == e) {
 			return i + 1;
 		}
 	}

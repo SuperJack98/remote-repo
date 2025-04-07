@@ -4,10 +4,10 @@
 typedef int ElemType;
 
 //顺序表定义
-typedef struct{
+typedef struct {
 	ElemType data[MAXSIZE];
 	int length;
-}SeqList;
+} SeqList;
 
 //顺序表初始化
 void initList(SeqList *L)

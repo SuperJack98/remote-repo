@@ -4,10 +4,10 @@
 typedef int ElemType;
 
 //顺序表定义
-typedef struct{
+typedef struct {
 	ElemType data[MAXSIZE];
 	int length;
-}SeqList;
+} SeqList;
 
 //顺序表初始化
 void initList(SeqList *L)
@@ -18,7 +18,7 @@ void initList(SeqList *L)
 //尾部添加元素
 int appendElem(SeqList *L, ElemType e)
 {
-	if (L->length>=MAXSIZE)
+	if (L->length >= MAXSIZE)
 	{
 		printf("顺序表已满\n");
 		return 0;
@@ -32,8 +32,7 @@ int appendElem(SeqList *L, ElemType e)
 //遍历
 void listElem(SeqList *L)
 {
-	for (int i = 0; i < L->length; i++)
-	{
+	for (int i = 0; i < L->length; i++) {
 		printf("%d ", L->data[i]);
 	}
 	printf("\n");
