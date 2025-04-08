@@ -3,22 +3,22 @@
 
 typedef char ElemType;
 
-typedef struct node{
+typedef struct node {
 	ElemType data;
 	struct node *next;
-}Node;
+} Node;
 
 //初化链表
 Node* initList()
 {
-	Node *head = (Node*)malloc(sizeof(Node));
+	Node *head = (Node *)malloc(sizeof(Node));
 	head->data = 0;
 	head->next = NULL;
 	return head;
 }
 
 //初始化节点（带节点数据域参数）
-Node* initListWithElem(ElemType e)
+Node *initListWithElem(ElemType e)
 {
 	Node *node = (Node*)malloc(sizeof(Node));
 	node->data = e;
@@ -27,9 +27,9 @@ Node* initListWithElem(ElemType e)
 }
 
 //头插法
-int insertHead(Node* L, ElemType e)
+int insertHead(Node *L, ElemType e)
 {
-	Node *p = (Node*)malloc(sizeof(Node));
+	Node *p = (Node *)malloc(sizeof(Node));
 	p->data = e;
 	p->next = L->next;
 	L->next = p;
@@ -37,32 +37,30 @@ int insertHead(Node* L, ElemType e)
 }
 
 //遍历
-void listNode(Node* L)
+void listNode(Node *L)
 {
 	Node *p = L->next;
-	while(p != NULL)
-	{
-		printf("%c ", p->data);
+	while (p != NULL) {
+		printf("%d ", p->data);
 		p = p->next;
 	}
 	printf("\n");
 }
 
 //获取尾部结点
-Node*  get_tail(Node  *L)
+Node *get_tail(Node *L)
 {
 	Node *p = L;
-	while(p->next != NULL)
-	{
+	while (p->next != NULL) {
 		p = p->next;
 	}
 	return p;
 }
 
 //尾插法
-Node* insertTail(Node *tail, ElemType e)
+Node *insertTail(Node *tail, ElemType e)
 {
-	Node *p = (Node*)malloc(sizeof(Node));
+	Node *p = (Node *)malloc(sizeof(Node));
 	p->data = e;
 	tail->next = p;
 	p->next = NULL;
@@ -70,7 +68,7 @@ Node* insertTail(Node *tail, ElemType e)
 }
 
 //尾插法（节点）
-Node* insertTailWithNode(Node *tail, Node *node)
+Node *insertTailWithNode(Node *tail, Node *node)
 {
 	tail->next = node;
 	node->next = NULL;
@@ -82,18 +80,15 @@ int insertNode(Node *L, int pos, ElemType e)
 {
 	Node *p = L;
 	int i = 0;
-	while(i < pos-1)
-	{
+	while (i < pos - 1) {
 		p = p->next;
 		i++;
-		if (p == NULL)
-		{
+		if (p == NULL) {
 			return 0;
 		}
 	}
-	
 
-	Node *q = (Node*)malloc(sizeof(Node));
+	Node *q = (Node *)malloc(sizeof(Node));
 	q->data = e;
 	q->next = p->next;
 	p->next = q;
@@ -105,18 +100,15 @@ int deleteNode(Node *L, int pos)
 {
 	Node *p = L;
 	int i = 0;
-	while(i < pos-1)
-	{
+	while (i < pos - 1) {
 		p = p->next;
 		i++;
-		if (p == NULL)
-		{
+		if (p == NULL) {
 			return 0;
 		}
 	}
 
-	if(p->next == NULL)
-	{
+	if (p->next == NULL) {
 		printf("要删除的位置错误\n");
 		return 0;
 	}
@@ -132,8 +124,7 @@ int listLength(Node *L)
 {
 	Node *p = L;
 	int len = 0;
-	while(p != NULL)
-	{
+	while (p != NULL) {
 		p = p->next;
 		len++;
 	}
@@ -146,8 +137,7 @@ void freeList(Node *L)
 	Node *p = L->next;
 	Node *q;
 
-	while(p != NULL)
-	{
+	while (p != NULL) {
 		q = p->next;
 		free(p);
 		p = q;
@@ -161,25 +151,23 @@ int findNodeFS(Node *L, int k)
 	Node *fast = L->next;
 	Node *slow = L->next;
 
-	for (int i = 0; i < k; i++)
-	{
+	for (int i = 0; i < k; i++) {
 		fast = fast->next;
 	}
 
-	while(fast != NULL)
-	{
+	while (fast != NULL) {
 		fast = fast->next;
 		slow = slow->next;
 	}
 
-	printf("倒数第%d个节点值为：%d\n", k, slow->data);
+	printf("倒数第%d个节点值为: %d\n", k, slow->data);
 	return 1;
 }
+
 //查找两个节点共同后缀的起始位置
-Node* findIntersectionNode(Node *headA, Node *headB)
+Node *findIntersectionNode(Node *headA, Node *headB)
 {
-	if(headA == NULL || headB == NULL)
-	{
+	if (headA == NULL || headB == NULL) {
 		return NULL;
 	}
 
@@ -188,15 +176,13 @@ Node* findIntersectionNode(Node *headA, Node *headB)
 	int lenB = 0;
 	
 	//遍历链表A，获取链表A的长度
-	while(p != NULL)
-	{
+	while (p != NULL) {
 		p = p->next;
 		lenA++;
 	}
 	//遍历链表B，获取链表B的长度
 	p = headB;
-	while(p != NULL)
-	{
+	while (p != NULL) {
 		p = p->next;
 		lenB++;
 	}
@@ -204,26 +190,21 @@ Node* findIntersectionNode(Node *headA, Node *headB)
 	Node *m;//快指针
 	Node *n;//慢指针
 	int step;//两个单词之间数量的差值，可以用于快指针先走的步数
-	if (lenA > lenB)
-	{
+	if (lenA > lenB) {
 		step = lenA - lenB;
 		m = headA;
 		n = headB;
-	}
-	else
-	{
+	} else {
 		step = lenB - lenA;
 		m = headB;
 		n = headA;
 	}
 	//让快指针先走step步
-	for (int i = 0; i < step; i++)
-	{
+	for (int i = 0; i < step; i++) {
 		m = m->next;
 	}
 	//快慢指针同步走，直到指向同一个节点退出循环
-	while(m != n)
-	{
+	while (m != n) {
 		m = m->next;
 		n = n->next;
 	}
@@ -256,7 +237,7 @@ int main(int argc, char const *argv[])
 	listNode(listA);
 	listNode(listB);
 
-	printf("%c\n",findIntersectionNode(listA,listB)->data);
+	printf("%c\n",findIntersectionNode(listA, listB)->data);
 	return 0;
 }
 
