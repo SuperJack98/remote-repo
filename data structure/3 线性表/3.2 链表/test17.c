@@ -3,15 +3,15 @@
 
 typedef int ElemType;
 
-typedef struct node{
+typedef struct node {
 	ElemType data;
 	struct node *next, *prev;
-}Node;
+} Node;
 
 //初化链表
-Node* initList()
+Node *initList()
 {
-	Node *head = (Node*)malloc(sizeof(Node));
+	Node *head = (Node *)malloc(sizeof(Node));
 	head->data = 0;
 	head->next = NULL;
 	head->prev = NULL;
@@ -20,14 +20,13 @@ Node* initList()
 
 
 //头插法
-int insertHead(Node* L, ElemType e)
+int insertHead(Node *L, ElemType e)
 {
-	Node *p = (Node*)malloc(sizeof(Node));
+	Node *p = (Node *)malloc(sizeof(Node));
 	p->data = e;
 	p->prev = L;
 	p->next = L->next;
-	if (L->next != NULL)
-	{
+	if (L->next != NULL) {
 		L->next->prev = p;
 	}
 	L->next = p;
@@ -35,11 +34,10 @@ int insertHead(Node* L, ElemType e)
 }
 
 //遍历
-void listNode(Node* L)
+void listNode(Node *L)
 {
 	Node *p = L->next;
-	while(p != NULL)
-	{
+	while (p != NULL) {
 		printf("%d ", p->data);
 		p = p->next;
 	}
@@ -47,20 +45,19 @@ void listNode(Node* L)
 }
 
 //获取尾部结点
-Node*  get_tail(Node  *L)
+Node *get_tail(Node *L)
 {
 	Node *p = L;
-	while(p->next != NULL)
-	{
+	while (p->next != NULL) {
 		p = p->next;
 	}
 	return p;
 }
 
 //尾插法
-Node* insertTail(Node *tail, ElemType e)
+Node *insertTail(Node *tail, ElemType e)
 {
-	Node *p = (Node*)malloc(sizeof(Node));
+	Node *p = (Node *)malloc(sizeof(Node));
 	p->data = e;
 	p->prev = tail;
 	tail->next = p;
@@ -73,18 +70,15 @@ int insertNode(Node *L, int pos, ElemType e)
 {
 	Node *p = L;
 	int i = 0;
-	while(i < pos-1)
-	{
+	while (i < pos - 1) {
 		p = p->next;
 		i++;
-		if (p == NULL)
-		{
+		if (p == NULL) {
 			return 0;
 		}
 	}
 	
-
-	Node *q = (Node*)malloc(sizeof(Node));
+	Node *q = (Node *)malloc(sizeof(Node));
 	q->data = e;
 	q->prev = p;
 	q->next = p->next;
@@ -98,18 +92,15 @@ int deleteNode(Node *L, int pos)
 {
 	Node *p = L;
 	int i = 0;
-	while(i < pos-1)
-	{
+	while(i < pos-1) {
 		p = p->next;
 		i++;
-		if (p == NULL)
-		{
+		if (p == NULL) {
 			return 0;
 		}
 	}
 
-	if(p->next == NULL)
-	{
+	if (p->next == NULL) {
 		printf("要删除的位置错误\n");
 		return 0;
 	}
@@ -121,24 +112,19 @@ int deleteNode(Node *L, int pos)
 	return 1;
 }
 
-
 //释放链表
 void freeList(Node *L)
 {
 	Node *p = L->next;
 	Node *q;
 
-	while(p != NULL)
-	{
+	while(p != NULL) {
 		q = p->next;
 		free(p);
 		p = q;
 	}
 	L->next = NULL;
 }
-
-
-
 
 int main(int argc, char const *argv[])
 {
@@ -160,10 +146,8 @@ int main(int argc, char const *argv[])
 	insertNode(list, 2, 15);
 	listNode(list);
 
-	
 	deleteNode(list, 2);
 	listNode(list);
-	
 
 	return 0;
 }

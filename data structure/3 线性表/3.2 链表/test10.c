@@ -20,7 +20,7 @@ Node* initList()
 //初始化节点（带节点数据域参数）
 Node *initListWithElem(ElemType e)
 {
-	Node *node = (Node*)malloc(sizeof(Node));
+	Node *node = (Node *)malloc(sizeof(Node));
 	node->data = e;
 	node->next = NULL;
 	return node;
