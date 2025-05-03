@@ -3,12 +3,11 @@
 
 typedef char ElemType;
 
-typedef struct TreeNode
-{
+typedef struct TreeNode {
 	ElemType data;
 	struct TreeNode *lchild;
 	struct TreeNode *rchild;
-}TreeNode;
+} TreeNode;
 
 typedef TreeNode* BiTree;
 
@@ -19,24 +18,19 @@ void createTree(BiTree *T)
 {
 	ElemType ch;
 	ch = str[idx++];
-	if (ch == '#')
-	{
+	if (ch == '#') {
 		*T = NULL;		
-	}
-	else
-	{
+	} else {
 		*T = (BiTree)malloc(sizeof(TreeNode));
 		(*T)->data = ch;
 		createTree(&(*T)->lchild);
 		createTree(&(*T)->rchild);
-
 	}
 }
 
 void preOrder(BiTree T)
 {
-	if (T == NULL)
-	{
+	if (T == NULL) {
 		return;
 	}
 
@@ -48,8 +42,7 @@ void preOrder(BiTree T)
 
 void inOrder(BiTree T)
 {
-	if (T == NULL)
-	{
+	if (T == NULL) {
 		return;
 	}
 
@@ -60,8 +53,7 @@ void inOrder(BiTree T)
 
 void postOrder(BiTree T)
 {
-	if (T == NULL)
-	{
+	if (T == NULL) {
 		return;
 	}
 
